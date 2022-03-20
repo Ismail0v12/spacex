@@ -1,12 +1,15 @@
 .launche-item {
-	text-decoration: none;
-	box-shadow: 0 0 36px rgb(0 0 0 / 5%);
-	background-color: #fff;
 	display: block;
+
 	margin-bottom: 30px;
-	border-radius: 20px;
-	user-select: none;
+
 	cursor: pointer;
+	user-select: none;
+	text-decoration: none;
+
+	border-radius: 20px;
+	background-color: #FFF;
+	box-shadow: 0 0 36px rgb(0 0 0 / 5%);
 }
 
 .launche-item:last-child {
@@ -14,18 +17,21 @@
 }
 
 .launche-item__img {
-	padding: 10px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	padding: 10px;
 }
 
 .launche-item__img img {
-	user-select: none;
 	width: 100%;
-	object-fit: contain;
 	height: 200px;
+
+	user-select: none;
+
 	border-radius: 20px 20px 0 0;
+	object-fit: contain;
 }
 
 .launche-item__body {
@@ -33,15 +39,19 @@
 }
 
 .launche-item__title {
-	font-size: 20px;
 	margin-bottom: 15px;
-	color: black;
-	font-weight: 500;
+
 	letter-spacing: 1px;
+
+	color: black;
+
+	font-size: 20px;
+	font-weight: 500;
 	line-height: 25px;
 }
 
 .launche-item__date {
-	color: rgba(0, 0, 0, 0.5);
 	text-align: right;
+
+	color: rgba(0, 0, 0, 0.5);
 }

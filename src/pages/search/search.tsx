@@ -28,14 +28,12 @@ function Search() {
       <div className="container">
         <div className="search__grid">
           <LauncheList
-            title="Past Launch"
+            columnName="Past Launch"
             data={launchPastData}
-            isMyLaunch={true}
           />
           <LauncheList
             data={launchCurrentData}
-            title="Launch"
-            isMyLaunch={true}
+            columnName="Launches"
           />
         </div>
       </div>

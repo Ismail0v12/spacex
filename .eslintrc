@@ -1,0 +1,25 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "semi": "off",
+    "no-empty-function": "off",
+    "@typescript-eslint/semi": [
+      1
+    ],
+    "@typescript-eslint/no-empty-interface": [
+      "warning",
+      {
+        "allowSingleExtends": true
+      }
+    ]
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ]
+}

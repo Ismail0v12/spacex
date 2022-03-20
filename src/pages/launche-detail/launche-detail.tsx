@@ -67,7 +67,7 @@ function LauncheDetail() {
                     data?.ships.length === 0 ? "No information found" :
                       data?.ships.map((item: ShipsInterface) => {
                         if (item === null) {
-                          return
+                          return "";
                         }
                         return <span key={item.id}>{item.id}, </span>
                       })
@@ -94,6 +94,6 @@ function LauncheDetail() {
       </div>
     </section>
   );
-}
+};
 
 export default LauncheDetail;

@@ -5,8 +5,13 @@ import './home.css';
 import StoreContext from "../../store/store";
 
 function Home() {
-  const {launchPast, launchCurrent} = useContext(StoreContext);
-
+  const {
+    launchPast,
+    launchCurrent,
+    setLaunchCurrent,
+    myLaunches,
+    setMyLaunches
+  } = useContext(StoreContext);
   return (
     <section className="home">
       <div className="container">
@@ -15,15 +20,19 @@ function Home() {
             isDraggable={false}
             columnName={ItemTypes.pastLaunches}
             data={launchPast}
-            title="Past Launches"/>
+          />
           <LauncheList
             data={launchCurrent}
+            setStateFrom={setLaunchCurrent}
+            setStateTo={setMyLaunches}
             columnName={ItemTypes.launches}
-            title="Launches"/>
+          />
           <LauncheList
+            data={myLaunches}
             columnName={ItemTypes.myLaunches}
-            isMyLaunch={true}
-            title="My Launches"/>
+            setStateFrom={setLaunchCurrent}
+            setStateTo={setMyLaunches}
+          />
         </div>
       </div>
     </section>

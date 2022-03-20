@@ -1,13 +1,16 @@
 .navigation {
-	background-color: #fff;
 	padding: 20px;
+
+	background-color: #FFF;
 	box-shadow: 0 20px 36px rgb(0 0 0 / 5%);
 }
 
 .navigation__logo {
-	color: black;
-	font-size: 36px;
 	text-decoration: none;
+
+	color: black;
+
+	font-size: 36px;
 }
 
 .navigation__wrapper {
@@ -21,26 +24,31 @@
 }
 
 .navigation__form input {
-	outline: none;
-	color: black;
-	box-shadow: 0 0 36px rgb(0 0 0 / 10%);
-	border: none;
-	font-size: 14px;
-	padding: 12px 35px 12px 10px;
-	border-radius: 10px;
 	width: 300px;
+	padding: 12px 35px 12px 10px;
+
+	color: black;
+	border: none;
+	border-radius: 10px;
+	outline: none;
+	box-shadow: 0 0 36px rgb(0 0 0 / 10%);
+
+	font-size: 14px;
 }
 
 .navigation__form button {
 	position: absolute;
 	right: 0;
-	outline: none;
-	background-color: #fff;
-	border: none;
 	bottom: 0;
+
 	padding: 11px 7px;
-	border-radius: 0 10px 10px 0;
+
 	cursor: pointer;
+
+	border: none;
+	border-radius: 0 10px 10px 0;
+	outline: none;
+	background-color: #FFF;
 }
 
 .navigation__form button svg {
