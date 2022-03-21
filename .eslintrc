@@ -5,13 +5,14 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "semi": "off",
-    "no-empty-function": "off",
+    "semi": "warn",
+    "no-empty-function": "warn",
+    "no-empty": "warn",
     "@typescript-eslint/semi": [
-      1
+      "warn"
     ],
     "@typescript-eslint/no-empty-interface": [
-      "warning",
+      "warn",
       {
         "allowSingleExtends": true
       }

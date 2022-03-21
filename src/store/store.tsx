@@ -13,8 +13,10 @@ const StoreContext = createContext({
   myLaunches: [],
   loading: true,
   setLaunchCurrent: (data: (data: any) => any[]) => {
+    return;
   },
   setMyLaunches: (data: (data: any) => any[]) => {
+    return;
   }
 });
 

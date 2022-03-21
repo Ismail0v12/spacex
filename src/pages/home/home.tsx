@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
 import LauncheList from "../../components/launche-list/launche-list";
-import {ItemTypes} from "../../components/constants/constants";
 import './home.css';
 import StoreContext from "../../store/store";
+import useCustomDrop from "../../hooks/useCustomDrop";
 
 function Home() {
   const {
@@ -12,26 +12,36 @@ function Home() {
     myLaunches,
     setMyLaunches
   } = useContext(StoreContext);
+
+  const {drop: launchesRef} = useCustomDrop({
+    accept: "Launches",
+    setStateFrom: setLaunchCurrent,
+    setStateTo: setMyLaunches
+  });
+  const {drop: myLaunchesRef} = useCustomDrop({
+    accept: "My Launches",
+    setStateFrom: setMyLaunches,
+    setStateTo: setLaunchCurrent
+  });
+
   return (
     <section className="home">
       <div className="container">
         <div className="home__wrapper">
           <LauncheList
             isDraggable={false}
-            columnName={ItemTypes.pastLaunches}
+            columnName={"Past Launches"}
             data={launchPast}
           />
           <LauncheList
+            refComponent={myLaunchesRef}
             data={launchCurrent}
-            setStateFrom={setLaunchCurrent}
-            setStateTo={setMyLaunches}
-            columnName={ItemTypes.launches}
+            columnName={"Launches"}
           />
           <LauncheList
+            refComponent={launchesRef}
             data={myLaunches}
-            columnName={ItemTypes.myLaunches}
-            setStateFrom={setLaunchCurrent}
-            setStateTo={setMyLaunches}
+            columnName={"My Launches"}
           />
         </div>
       </div>
