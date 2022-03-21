@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import './launche-detail.css';
+import Skeleton from "react-loading-skeleton";
 import {getDataById} from "../../base-api";
 import {useParams} from "react-router";
 import {LaunchDataInterface, ShipsInterface} from "../../interface/launch-data-interface";
-import Skeleton from "react-loading-skeleton";
 import CheckIcon from "../../assets/icons/check-icon";
 import CancelIcon from "../../assets/icons/cancel-icon";
+import './launche-detail.css';
 
 function LauncheDetail() {
   const {id} = useParams();
@@ -15,7 +15,7 @@ function LauncheDetail() {
     getDataById(id)
       .then(res => {
         setData(res.data);
-        setLoading(false)
+        setLoading(false);
       })
       .catch(err => console.log(err));
   }, [id]);
@@ -34,7 +34,7 @@ function LauncheDetail() {
         <Skeleton width={500} height={400}/>
         <Skeleton width={700} height={400}/>
       </div>
-    )
+    );
   }
 
   return (
@@ -67,9 +67,9 @@ function LauncheDetail() {
                     data?.ships.length === 0 ? "No information found" :
                       data?.ships.map((item: ShipsInterface) => {
                         if (item === null) {
-                          return ""
+                          return "";
                         }
-                        return <span key={item.id}>{item.id}, </span>
+                        return <span key={item.id}>{item.id}, </span>;
                       })
                   }
                 </td>

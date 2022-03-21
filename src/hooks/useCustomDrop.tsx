@@ -1,4 +1,3 @@
-import React from 'react';
 import {useDrop} from "react-dnd";
 import {LaunchDataInterface} from "../interface/launch-data-interface";
 
@@ -12,19 +11,18 @@ function useCustomDrop({accept, setStateTo, setStateFrom}: useCustomDrop) {
   const [{isOver}, drop] = useDrop({
     accept,
     drop: (item: LaunchDataInterface) => {
-      setStateTo((state: any) => [...state, item]);
-
+      setStateTo((state: any) => [item, ...state]);
       setStateFrom((state) => {
         const index = state.findIndex((launch: { mission_name: string; }) => launch.mission_name === item.mission_name);
-        return [...state.slice(0, index), ...state.slice(index + 1)];
+        return state.splice(index, 1);
       });
     },
     collect: (monitor) => {
       return ({
         isOver: monitor.isOver(),
-      })
+      });
     }
-  }, []);
+  }, [accept]);
 
   return {drop, isOver};
 }

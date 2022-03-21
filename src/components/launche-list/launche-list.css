@@ -1,15 +1,21 @@
 .launche-list {
+	overflow-y: auto;
+
+	max-height: 100vh;
 	padding: 20px 30px;
 
 	border-radius: 20px;
 	background-color: #FFF;
 	box-shadow: 0 0 36px rgb(0 0 0 / 4%);
-	max-height: 100vh;
-	overflow-y: auto;
 }
 
 .launche-list::-webkit-scrollbar {
-width: 5px;
+	width: 5px;
+}
+
+.launche-list::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: black;
 }
 
 .launche-list__title {

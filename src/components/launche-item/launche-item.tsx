@@ -1,20 +1,20 @@
-import React, {useState} from 'react';
+import React, {memo, useEffect} from 'react';
 import {Link} from "react-router-dom";
-import './launche-item.css'
-import {LaunchDataInterface} from "../../interface/launch-data-interface";
 import {useDrag} from "react-dnd";
-import Modal from "../modal/modal";
+import {LaunchDataInterface} from "../../interface/launch-data-interface";
+import './launche-item.css';
 
 interface ListItemProps {
   readonly launchCardData: LaunchDataInterface;
-  readonly isDraggable?: boolean;
   readonly type?: any;
+  readonly setDropped?: (isDropped: boolean) => void | any;
+  readonly dropped?: boolean | any;
 }
 
-function LauncheItem({launchCardData, isDraggable = true, type}: ListItemProps) {
-  const [dropped, setDropped] = useState(false);
+const LauncheItem = memo(function ({launchCardData, type, setDropped, dropped}: ListItemProps) {
   const {links: {mission_patch_small}, mission_name, id, launch_date_local} = launchCardData;
-  const [{opacity}, drag] = useDrag({
+
+  const [{opacity, didDrop}, drag] = useDrag({
     type: type,
     item: {
       id,
@@ -24,31 +24,32 @@ function LauncheItem({launchCardData, isDraggable = true, type}: ListItemProps) 
         mission_patch_small
       },
     },
-    end: (item, monitor) => {
-      if (item && monitor.didDrop()) {
-        setDropped(true);
-      }
-    },
     collect: (monitor) => {
       return ({
         opacity: monitor.isDragging() ? 0.5 : 1,
-      })
+        didDrop: monitor.didDrop()
+      });
     }
-  }, [])
-  const link = `/${launchCardData.id}`;
+  }, []);
 
-  const humanReadableDate = new Date(launch_date_local!).toLocaleString("ru-RU", {
+  useEffect(() => {
+    if (didDrop) {
+      setDropped && setDropped(true);
+    }
+  }, [didDrop]);
+
+  const humanReadableDate = new Date(launch_date_local).toLocaleString("ru-RU", {
     month: "numeric",
     day: "numeric",
     year: "numeric"
-  })
+  });
+  const link = `/${launchCardData.id}`;
 
   return (
     <>
       <Link
         to={link}
         ref={drag}
-        draggable={isDraggable}
         style={{opacity}}
         className="launche-item"
       >
@@ -63,11 +64,8 @@ function LauncheItem({launchCardData, isDraggable = true, type}: ListItemProps) 
           <div className="launche-item__date">{humanReadableDate}</div>
         </div>
       </Link>
-      {dropped && (
-        <Modal setModal={setDropped}/>
-      )}
     </>
   );
-}
+});
 
 export default LauncheItem;

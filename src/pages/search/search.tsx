@@ -1,9 +1,9 @@
 import React, {useCallback, useContext} from 'react';
-import './search.css';
+import {useLocation} from "react-router";
 import LauncheList from "../../components/launche-list/launche-list";
 import StoreContext from "../../store/store";
 import {LaunchDataInterface} from "../../interface/launch-data-interface";
-import {useLocation} from "react-router";
+import './search.css';
 
 function Search() {
   const {launchPast, launchCurrent} = useContext(StoreContext);

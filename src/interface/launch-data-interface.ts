@@ -14,6 +14,6 @@ export interface LaunchDataInterface {
   readonly links: LinksInterface;
   readonly launch_success?: boolean;
   readonly upcoming?: boolean;
-  readonly launch_date_local?: string | Date;
+  readonly launch_date_local?: string | Date | number | any;
   readonly ships?: ShipsInterface[];
 }

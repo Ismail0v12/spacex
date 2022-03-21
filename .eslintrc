@@ -6,6 +6,7 @@
   ],
   "rules": {
     "semi": "warn",
+    "no-explcit-any": "off",
     "no-empty-function": "warn",
     "no-empty": "warn",
     "@typescript-eslint/semi": [

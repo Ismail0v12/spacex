@@ -1,7 +1,7 @@
 import React, {useLayoutEffect} from 'react';
-import './modal.css';
 import CancelIcon from "../../assets/icons/cancel-icon";
 import CheckIcon from "../../assets/icons/check-icon";
+import './modal.css';
 
 interface ModalProps {
   readonly setModal: (isOpen: boolean) => void;
@@ -13,7 +13,7 @@ function Modal({setModal}: ModalProps) {
       if (e.key === "Escape") {
         setModal(false);
       }
-    })
+    });
   }, []);
   return (
     <div className="modal">
@@ -21,7 +21,7 @@ function Modal({setModal}: ModalProps) {
         <div className="modal__close" onClick={() => setModal(false)}><CancelIcon/></div>
         <div className="modal__body">
           <span><CheckIcon/></span>
-          <h3>Booked :)</h3>
+          <h3>Dropped :)</h3>
         </div>
       </div>
     </div>

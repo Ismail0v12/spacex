@@ -32,12 +32,14 @@ export function StoreContextProvider({children}: StoreProps) {
         setLaunchPast(res.data);
         setLoading(false);
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
     getAllData("launches-upcoming")
       .then(res => {
         setLaunchCurrent(res.data);
+        setLoading(false);
+
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   }, []);
   const context = {
     launchPast,
@@ -46,7 +48,7 @@ export function StoreContextProvider({children}: StoreProps) {
     myLaunches,
     setLaunchCurrent,
     setMyLaunches
-  }
+  };
   return (
     <StoreContext.Provider value={context}>
       {children}

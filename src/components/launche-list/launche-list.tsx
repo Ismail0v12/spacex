@@ -1,34 +1,36 @@
 import React, {useContext} from 'react';
-import './launche-list.css';
 import {LaunchDataInterface} from "../../interface/launch-data-interface";
 import LauncheItem from "../launche-item/launche-item";
 import Spinner from "../spinner/spinner";
 import StoreContext from "../../store/store";
+import './launche-list.css';
 
 interface LauncheListProps {
   readonly columnName: string;
-  readonly isDraggable?: boolean;
   readonly data?: LaunchDataInterface[] | any;
   readonly refComponent?: React.Ref<any>;
+  readonly setDropped?: (isDropped: boolean) => void | any;
+  readonly dropped?: boolean | any;
 }
 
 function LauncheList(
   {
-    isDraggable = true,
     data,
     refComponent,
     columnName,
+    setDropped,
+    dropped
   }: LauncheListProps
 ) {
   const {loading} = useContext(StoreContext);
 
-
-  const launchItems = data?.map((item: LaunchDataInterface, index: number) => (
+  const launchItems = data?.map((item: LaunchDataInterface) => (
     <LauncheItem
-      key={item.id + index}
-      isDraggable={isDraggable}
+      key={item.mission_name}
       launchCardData={item}
       type={columnName}
+      setDropped={setDropped}
+      dropped={dropped}
     />
   ))
 

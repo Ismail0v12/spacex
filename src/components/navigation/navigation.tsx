@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import './navgitaion.css';
 import {Link, useNavigate} from "react-router-dom";
 import SearchIcon from "../../assets/icons/search-icon";
+import './navgitaion.css';
 
 function Navigation() {
   const [term, setTerm] = useState("");

@@ -1,8 +1,10 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
+import ReactDOM from "react-dom";
 import LauncheList from "../../components/launche-list/launche-list";
-import './home.css';
 import StoreContext from "../../store/store";
 import useCustomDrop from "../../hooks/useCustomDrop";
+import Modal from "../../components/modal/modal";
+import './home.css';
 
 function Home() {
   const {
@@ -12,6 +14,7 @@ function Home() {
     myLaunches,
     setMyLaunches
   } = useContext(StoreContext);
+  const [dropped, setDropped] = useState(false);
 
   const {drop: launchesRef} = useCustomDrop({
     accept: "Launches",
@@ -29,7 +32,6 @@ function Home() {
       <div className="container">
         <div className="home__wrapper">
           <LauncheList
-            isDraggable={false}
             columnName={"Past Launches"}
             data={launchPast}
           />
@@ -37,13 +39,23 @@ function Home() {
             refComponent={myLaunchesRef}
             data={launchCurrent}
             columnName={"Launches"}
+            dropped={dropped}
+            setDropped={setDropped}
           />
           <LauncheList
             refComponent={launchesRef}
             data={myLaunches}
             columnName={"My Launches"}
+            dropped={dropped}
+            setDropped={setDropped}
           />
         </div>
+        {dropped &&
+          ReactDOM.createPortal(
+            <Modal setModal={setDropped}/>,
+            document.getElementById("portal") as HTMLElement
+          )
+        }
       </div>
     </section>
   );
