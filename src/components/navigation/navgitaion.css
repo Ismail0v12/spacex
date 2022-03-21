@@ -54,3 +54,10 @@
 .navigation__form button svg {
 	width: 20px;
 }
+
+@media (max-width: 576px) {
+	.navigation__wrapper {
+		flex-wrap: wrap;
+		gap: 30px;
+	}
+}

@@ -11,6 +11,7 @@ function LauncheDetail() {
   const {id} = useParams();
   const [data, setData] = useState<LaunchDataInterface | any>();
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     getDataById(id)
       .then(res => {
@@ -23,7 +24,7 @@ function LauncheDetail() {
   if (loading) {
     return (
       <div
-        className="container"
+        className="container loading"
         style={{
           display: "flex",
           alignItems: "center",
@@ -51,44 +52,46 @@ function LauncheDetail() {
               {data?.mission_name}
             </div>
             <article>{data?.details}</article>
-            <table>
-              <thead>
-              <tr>
-                <td>Ships</td>
-                <td>Launch Year</td>
-                <td>Launched Successfully</td>
-                <td>Upcoming</td>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>
-                  {
-                    data?.ships.length === 0 ? "No information found" :
-                      data?.ships.map((item: ShipsInterface) => {
-                        if (item === null) {
-                          return "";
-                        }
-                        return <span key={item.id}>{item.id}, </span>;
-                      })
-                  }
-                </td>
-                <td>{data?.launch_date_local}</td>
-                <td>
-                  {
-                    data?.launch_success ? <span className="check-icon"><CheckIcon/></span> :
-                      <span className="cancel-icon"><CancelIcon/></span>
-                  }
-                </td>
-                <td>
-                  {
-                    data?.upcoming ? <span className="check-icon"><CheckIcon/></span> :
-                      <span className="cancel-icon"><CancelIcon/></span>
-                  }
-                </td>
-              </tr>
-              </tbody>
-            </table>
+            <div style={{width: "100%", overflow: "auto"}}>
+              <table>
+                <thead>
+                <tr>
+                  <td>Ships</td>
+                  <td>Launch Year</td>
+                  <td>Launched Successfully</td>
+                  <td>Upcoming</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>
+                    {
+                      data?.ships.length === 0 ? "No information found" :
+                        data?.ships.map((item: ShipsInterface) => {
+                          if (item === null) {
+                            return "";
+                          }
+                          return <span key={item.id}>{item.id}, </span>;
+                        })
+                    }
+                  </td>
+                  <td>{data?.launch_date_local}</td>
+                  <td>
+                    {
+                      data?.launch_success ? <span className="check-icon"><CheckIcon/></span> :
+                        <span className="cancel-icon"><CancelIcon/></span>
+                    }
+                  </td>
+                  <td>
+                    {
+                      data?.upcoming ? <span className="check-icon"><CheckIcon/></span> :
+                        <span className="cancel-icon"><CancelIcon/></span>
+                    }
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

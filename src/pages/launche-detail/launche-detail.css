@@ -80,3 +80,60 @@
 .cancel-icon svg path {
 	stroke: white;
 }
+
+@media (max-width: 1399px) {
+	.loading span:first-child span {
+		width: 440px !important;
+	}
+
+	.loading span:last-child span {
+		width: 600px !important;
+	}
+}
+
+@media (max-width: 1200px) {
+	.loading span:first-child span {
+		width: 400px !important;
+	}
+
+	.loading span:last-child span {
+		width: 500px !important;
+	}
+}
+
+@media (max-width: 992px) {
+	.loading span:first-child span {
+		width: 300px !important;
+		height: 280px !important;
+	}
+
+	.loading span:last-child span {
+		width: 400px !important;
+		height: 280px !important;
+	}
+	.launche-detail__wrapper {
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.launche-detail__img {
+		height: 300px;
+	}
+}
+
+@media (max-width: 768px) {
+	.loading  {
+		flex-direction: column;
+	}
+	.loading span {
+		width: 100%;
+	}
+	.loading span:first-child span {
+		width: 100% !important;
+		height: 280px !important;
+	}
+
+	.loading span:last-child span {
+		width: 100% !important;
+		height: 280px !important;
+
+	}
+}
